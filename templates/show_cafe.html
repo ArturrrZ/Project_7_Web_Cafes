@@ -1,0 +1,43 @@
+{%include 'header.html'%}
+<header
+  class="masthead"
+  style="background-image: url('{{cafe.img_url}}')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>{{cafe.name}}</h1>
+          <p>
+             You can find them at {{ cafe.location }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <a href="{{ cafe.map_url }}"><h2>Map Link</h2></a>
+            <p>
+
+        Wi-Fi: {%if cafe.has_wifi%} ✅ {%else%} ❌ {%endif%}
+        Sockets: {%if cafe.has_sockets%} ✅ {%else%} ❌ {%endif%}
+        Toilets: {%if cafe.has_toilet%} ✅ {%else%} ❌ {%endif%}
+      </p>
+            <hr>
+        <p>
+            There are {{cafe.seats}} seats with an average price for coffee {{cafe.coffee_price}} <br>
+            {%if cafe.can_take_calls:%} You can even take calls there! It's pretty convenient though.
+            {%else%} Unfortunately, they don't like loud conversation by phone.
+            {%endif%}
+        </p>
+        </div>
+    </div>
+</div>
+
+
+
+{%include 'footer.html'%}

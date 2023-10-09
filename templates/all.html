@@ -1,0 +1,44 @@
+{% include "header.html" %}
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/cafes.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>What are your preferences? </h1>
+          <p>Whether you're looking for places with sockets, WiFi, a convenient location, or
+            even just a spot for enjoying a delicious coffee,<br>
+            our database has the perfect place tailored to your needs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+{%for cafe in all_cafes:%}
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-8 offset-md-2">
+      <a href="{{ url_for('show_cafe', cafe_id=cafe.id) }}"><h4>{{cafe.name}}</h4></a>
+      <p>
+        Location: {{ cafe.location }}.  <a href="{{cafe.map_url}}">Map Link</a><br>
+        Wi-Fi: {%if cafe.has_wifi%} ✅ {%else%} ❌ {%endif%}
+        Sockets: {%if cafe.has_sockets%} ✅ {%else%} ❌ {%endif%}
+        Toilets: {%if cafe.has_toilet%} ✅ {%else%} ❌ {%endif%}
+
+
+      </p>
+      <hr>
+    </div>
+
+  </div>
+
+</div>
+
+{%endfor%}
+
+{% include 'footer.html' %}
